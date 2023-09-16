@@ -16,7 +16,7 @@ return {
   },
   {
     "jay-babu/mason-null-ls.nvim",
-    opts = function(_, opts) opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, { "prettierd" }) end,
+    opts = function(_, opts) opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, { "prettier" }) end,
   },
   {
     "hrsh7th/nvim-cmp",

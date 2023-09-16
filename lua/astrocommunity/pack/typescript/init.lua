@@ -54,7 +54,7 @@ return {
     "jay-babu/mason-null-ls.nvim",
 
     opts = function(_, opts)
-      opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, { "prettierd", "eslint_d" })
+      opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, { "prettier", "eslint" })
       if not opts.handlers then opts.handlers = {} end
 
       local has_prettier = function(util)
@@ -80,16 +80,16 @@ return {
           or check_json_key_exists(vim.fn.getcwd() .. "/package.json", "eslintConfig")
       end
 
-      opts.handlers.prettierd = function()
+      opts.handlers.prettier = function()
         local null_ls = require "null-ls"
-        null_ls.register(null_ls.builtins.formatting.prettierd.with { condition = has_prettier })
+        null_ls.register(null_ls.builtins.formatting.prettier.with { condition = has_prettier })
       end
 
-      opts.handlers.eslint_d = function()
+      opts.handlers.eslint = function()
         local null_ls = require "null-ls"
-        null_ls.register(null_ls.builtins.diagnostics.eslint_d.with { condition = has_eslint })
-        null_ls.register(null_ls.builtins.formatting.eslint_d.with { condition = has_eslint })
-        null_ls.register(null_ls.builtins.code_actions.eslint_d.with { condition = has_eslint })
+        null_ls.register(null_ls.builtins.diagnostics.eslint.with { condition = has_eslint })
+        null_ls.register(null_ls.builtins.formatting.eslint.with { condition = has_eslint })
+        null_ls.register(null_ls.builtins.code_actions.eslint.with { condition = has_eslint })
       end
     end,
   },
